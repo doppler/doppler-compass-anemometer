@@ -1,4 +1,4 @@
-type SeriesSize = "sm" | "md" | "lg";
+type SeriesSize = 'sm' | 'md' | 'lg';
 
 export interface SimpleOptions {
   text: string;
