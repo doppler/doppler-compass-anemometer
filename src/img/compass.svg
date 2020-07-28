@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .direction {
+      fill: hsla(240, 100%, 90%, 0.5);
+    }
+
+    .text {
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 3rem;
+    }
+
+    #face {
+      /* fill: hsla(240, 50%, 50%, 0.5); */
+      fill: url(#faceGradient);
+    }
+
+    #centerCircle {
+      fill: hsla(255, 100%, 50%, 0.75);
+    }
+
+    #velocityText {
+      font-size: 9rem;
+      stroke: white;
+      fill: hsl(120, 100%, 50%);
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .velocityLegend {
+      fill: white;
+      font-size: 1.5em;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+
+    #directionIndicator {
+      stroke: white;
+      fill: hsla(30, 100%, 50%, 0.85);
+      transform-origin: 50% 50%;
+      transform: rotate(0deg);
+    }
+  </style>
+  <defs>
+    <radialGradient id='faceGradient'>
+      <stop offset='0%' stop-color='hsla(300, 100%, 20%, 1)' />
+      <stop offset='39%' stop-color='hsla(260, 100%, 50%, 0.0)' />
+      <stop offset='100%' stop-color='hsla(220, 100%, 25%, 0.5' />
+    </radialGradient>
+    <path id='hash' d="M 250 0 L 256 12.5 L 262 0 Z" class='direction' />
+  </defs>
+
+  <path id='directionIndicator' d="M 258 0 L 260 256 L 314 314 L 256 512 L 197 314 L 252 256 L 254 0 Z" />
+
+  <circle id='face' cx='256' cy='256' r='256' />
+
+  <circle id='centerCircle' cx='256' cy='256' r='82.9' />
+
+  <text id='velocityText' x='256' y='266'>0</text>
+  <text class='velocityLegend' x='256' y='325'>mph</text>
+
+  <text x='243' y='28' class='direction text'>N</text>
+  <text x='489' y='269' class='direction text'>E</text>
+  <text x='243' y='512' class='direction text'>S</text>
+  <text x='0' y='269' class='direction text'>W</text>
+
+  <use href='#hash' transform="rotate(22.5, 256, 256)" />
+  <use href='#hash' transform="rotate(45, 256, 256)" />
+  <use href='#hash' transform="rotate(67.5, 256, 256)" />
+  <use href='#hash' transform="rotate(112.5, 256, 256)" />
+  <use href='#hash' transform="rotate(135, 256, 256)" />
+  <use href='#hash' transform="rotate(157.5, 256, 256)" />
+  <use href='#hash' transform="rotate(202.5, 256, 256)" />
+  <use href='#hash' transform="rotate(225, 256, 256)" />
+  <use href='#hash' transform="rotate(247.5, 256, 256)" />
+  <use href='#hash' transform="rotate(292.5, 256, 256)" />
+  <use href='#hash' transform="rotate(315, 256, 256)" />
+  <use href='#hash' transform="rotate(337.5, 256, 256)" />
+</svg>
