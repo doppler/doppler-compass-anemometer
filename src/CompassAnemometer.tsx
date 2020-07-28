@@ -2,7 +2,7 @@ import React from 'react';
 import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css, cx } from 'emotion';
-import { stylesFactory, getTheme } from '@grafana/ui';
+import { stylesFactory, getTheme, useTheme } from '@grafana/ui';
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -12,7 +12,7 @@ export const CompassAnemometer: React.FC<Props> = ({
   width,
   height,
 }) => {
-  const theme = getTheme();
+  const theme = useTheme();
   const styles = getStyles(theme);
 
   const dir = data.series
@@ -95,7 +95,7 @@ export const CompassAnemometer: React.FC<Props> = ({
           className={cx(
             styles.centerCircle,
             css`
-              opacity: 0.75;
+              opacity: 0.85;
             `
           )}
           id='centerCircle'
@@ -129,32 +129,33 @@ const getStyles = stylesFactory((theme) => {
       fill: black;
     `,
     directionIndicator: css`
-      fill: ${theme.isLight ? theme.palette.greenBase : theme.palette.blue95};
+      fill: ${theme.palette.orange};
       transform-origin: 256px 256px;
       transform: rotate(0deg);
     `,
     face: css`
       fill: none;
-      stroke: ${theme.isLight ? theme.palette.greenBase : theme.palette.blue95};
+      stroke: ${theme.palette.yellow};
       stroke-width: 32px;
     `,
     centerCircle: css`
-      fill: ${theme.isLight ? theme.palette.greenBase : theme.palette.blue95};
+      fill: ${theme.colors.bg1};
     `,
     velocityText: css`
       font-size: 9rem;
-      fill: black;
+      fill: ${theme.palette.yellow};
       font-weight: bold;
       text-anchor: middle;
       dominant-baseline: middle;
     `,
     text: css`
+      fill: black;
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
       font-size: 3rem;
     `,
     velocityLegend: css`
-      fill: black;
+      fill: ${theme.palette.yellow};
       font-size: 1.5em;
       font-weight: bold;
       text-anchor: middle;
