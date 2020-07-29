@@ -1,22 +1,24 @@
-import React from 'react';
-import { PanelProps } from '@grafana/data';
-import { SimpleOptions } from 'types';
-import { css, cx } from 'emotion';
-import { stylesFactory, useTheme } from '@grafana/ui';
+import React from "react";
+import { PanelProps } from "@grafana/data";
+import { SimpleOptions } from "types";
+import { css, cx } from "emotion";
+import { stylesFactory, useTheme } from "@grafana/ui";
 
 interface Props extends PanelProps<SimpleOptions> {}
 
-export const CompassAnemometer: React.FC<Props> = ({ options, data, width, height }) => {
+export const CompassAnemometer: React.FC<Props> = (
+  { options, data, width, height },
+) => {
   const theme = useTheme();
   const styles = getStyles(theme);
 
   const dir = data.series
-    .map(series => series.fields.find(field => field.name === 'dir'))
-    .map(field => field?.values.get(field.values.length - 1))[0];
+    .map((series) => series.fields.find((field) => field.name === "dir"))
+    .map((field) => field?.values.get(field.values.length - 1))[0];
 
   const mps = data.series
-    .map(series => series.fields.find(field => field.name === 'mps'))
-    .map(field => field?.values.get(field.values.length - 1))[1];
+    .map((series) => series.fields.find((field) => field.name === "mps"))
+    .map((field) => field?.values.get(field.values.length - 1))[1];
 
   return (
     <div
@@ -25,14 +27,25 @@ export const CompassAnemometer: React.FC<Props> = ({ options, data, width, heigh
         css`
           width: ${width}px;
           height: ${height}px;
-        `
+        `,
       )}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width={width}
+        height={height}
+      >
         <defs>
           <path id="hash" d="M 250 3 L 256 29 L 262 3 Z" fill="black" />
           <mask id="hash-mask">
-            <circle cx="256" cy="256" r="240" stroke="white" stroke-width="32px" />
+            <circle
+              cx="256"
+              cy="256"
+              r="240"
+              stroke="white"
+              stroke-width="32px"
+            />
 
             <g>
               <text x="243" y="30" fill="black" className={styles.text}>
@@ -71,14 +84,21 @@ export const CompassAnemometer: React.FC<Props> = ({ options, data, width, heigh
           style={{ transform: `rotate(${dir}deg)` }}
         />
 
-        <circle className={styles.face} id="face" cx="256" cy="256" r="240" mask="url(#hash-mask)" />
+        <circle
+          className={styles.face}
+          id="face"
+          cx="256"
+          cy="256"
+          r="240"
+          mask="url(#hash-mask)"
+        />
 
         <circle
           className={cx(
             styles.centerCircle,
             css`
               opacity: 0.85;
-            `
+            `,
           )}
           id="centerCircle"
           cx="256"
@@ -97,7 +117,7 @@ export const CompassAnemometer: React.FC<Props> = ({ options, data, width, heigh
   );
 };
 
-const getStyles = stylesFactory(theme => {
+const getStyles = stylesFactory((theme) => {
   return {
     wrapper: css`
       position: relative;
