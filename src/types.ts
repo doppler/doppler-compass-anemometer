@@ -1,2 +1,1 @@
-export interface SimpleOptions {
-}
+export interface SimpleOptions {}
