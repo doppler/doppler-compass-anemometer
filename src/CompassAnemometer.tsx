@@ -16,7 +16,7 @@ export const CompassAnemometer: React.FC<Props> = ({ options, data, width, heigh
 
   const mps = data.series
     .map(series => series.fields.find(field => field.name === 'mps'))
-    .map(field => field?.values.get(field.values.length - 1))[1];
+    .map(field => field?.values.get(field.values.length - 1))[0];
 
   return (
     <div
