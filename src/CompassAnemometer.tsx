@@ -111,7 +111,9 @@ const getStyles = stylesFactory(theme => {
       fill: black;
     `,
     directionIndicator: css`
-      fill: ${theme.palette.orange};
+      fill: transparent;
+      stroke: ${theme.palette.orange};
+      stroke-width: 3px;
       transform-origin: 256px 256px;
       transform: rotate(0deg);
     `,
@@ -122,6 +124,7 @@ const getStyles = stylesFactory(theme => {
     `,
     centerCircle: css`
       fill: ${theme.colors.bg1};
+      fill-opacity: 0.5;
     `,
     velocityText: css`
       font-size: 9rem;
